@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Graph.Module
@@ -40,7 +41,7 @@ namespace Graph.Module
             }));
         }
 
-        public async Task<User> CreateB2CUser(User newUser)
+        private async Task<User> CreateB2CUser(User newUser)
         {
             try
             {
@@ -114,12 +115,75 @@ namespace Graph.Module
                 "surname",
                 "givenName",
                 "id",
-                "mail", 
+                "mail",
                 "userPrincipalName"));
 
             return user;
         }
 
+        public async Task<User> CreateUser(NewUserModel model, string createUser)
+        {
+
+            try
+            {
+                var user = new User
+                {
+
+                    AccountEnabled = true,
+                    DisplayName = model.DisplayName,
+                    GivenName = model.GivenName,
+                    Surname = model.Surname,
+                    Mail = model.Email,
+                    Identities = new List<ObjectIdentity>()
+                    {
+                        new ObjectIdentity()
+                        {
+                            Issuer = _config["AzureAdB2c:Domain"],
+                            SignInType = "emailAddress",
+                            IssuerAssignedId = model.Email
+                        }
+
+                    },
+                    PasswordProfile = new PasswordProfile
+                    {
+                        //asks user for their current password if set true
+                        ForceChangePasswordNextSignIn = false,
+                        Password = GetRandomPassword(16),
+                    },
+                    PasswordPolicies = "DisablePasswordExpiration",
+                    AdditionalData = new Dictionary<string, object>
+{
+                        { ExtensionClaims.GetAdminRoleKey(_config), model.IsAdminRole ? true : null },
+                    }
+                };
+
+                var createdUser = await CreateB2CUser(user);
+
+                //Track new user in database
+                //Email User using SendGrid
+
+                return createdUser;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        private static string GetRandomPassword(int length)
+        {
+            const string chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.@!&*$";
+
+            StringBuilder sb = new StringBuilder();
+            Random rnd = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                int index = rnd.Next(chars.Length);
+                sb.Append(chars[index]);
+            }
+
+            return sb.ToString();
+        }
 
     }
 }
