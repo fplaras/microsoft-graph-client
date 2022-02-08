@@ -1,0 +1,12 @@
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\bin\Debug\net6.0\Graph.Module.deps.json
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\bin\Debug\net6.0\Graph.Module.dll
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\bin\Debug\net6.0\ref\Graph.Module.dll
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\bin\Debug\net6.0\Graph.Module.pdb
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\obj\Debug\net6.0\Graph.Module.csproj.AssemblyReference.cache
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\obj\Debug\net6.0\Graph.Module.GeneratedMSBuildEditorConfig.editorconfig
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\obj\Debug\net6.0\Graph.Module.AssemblyInfoInputs.cache
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\obj\Debug\net6.0\Graph.Module.AssemblyInfo.cs
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\obj\Debug\net6.0\Graph.Module.csproj.CoreCompileInputs.cache
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\obj\Debug\net6.0\Graph.Module.dll
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\obj\Debug\net6.0\ref\Graph.Module.dll
+F:\Documents\Github Repos\microsoft-graph-client\Graph.Module\obj\Debug\net6.0\Graph.Module.pdb
